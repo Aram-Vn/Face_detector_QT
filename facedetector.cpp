@@ -1,11 +1,18 @@
 #include "facedetector.h"
 #include <QDebug>
 
-FaceDetector::FaceDetector()
-{
+FaceDetector::FaceDetector() :
     // Initialize the path to the Haar Cascade XML file
-    m_cascade_name = "/usr/share/opencv4/haarcascades/haarcascade_frontalface_default.xml";
+    // !!_change path if needed_!!
+    m_cascade_name("/usr/share/opencv4/haarcascades/haarcascade_frontalface_default.xml"),
 
+    // Define a collection of colors for drawing rectangles around faces
+    /*8 colors collection*/
+    m_colors_col { cv::Scalar(0.0, 0.0, 255.0), cv::Scalar(0.0, 128.0, 255.0),
+                 cv::Scalar(0.0, 255.0, 255.0), cv::Scalar(0.0, 255.0, 0.0),
+                 cv::Scalar(255.0, 128.0, 0.0), cv::Scalar(255.0, 255.0, 0.0),
+                 cv::Scalar(255.0, 0.0, 0.0), cv::Scalar(255.0, 0.0, 255.0) }
+{
     // Load the face cascade classifier
     if(!m_face_cascade.load(m_cascade_name))
     {
@@ -18,13 +25,6 @@ FaceDetector::FaceDetector()
         // qPrintable is used to convert the QString to a const char* for compatibility.
         qFatal("%s", qPrintable(errorMessage));
     }
-
-    // Define a collection of colors for drawing rectangles around faces
-    /*8 colors collection*/
-    m_colors_col  << cv::Scalar(0.0,0.0,255.0)   << cv::Scalar(0.0,128.0,255.0)
-                  << cv::Scalar(0.0,255.0,255.0) << cv::Scalar(0.0,255.0,0.0)
-                  << cv::Scalar(255.0,128.0,0.0) << cv::Scalar(255.0,255.0,0.0)
-                  << cv::Scalar(255.0,0.0,0.0)   << cv::Scalar(255.0,0.0,255.0);
 }
 
 QImage FaceDetector::detect(cv::Mat frame)
@@ -52,7 +52,7 @@ QImage FaceDetector::detect(cv::Mat frame)
         rect = m_found_faces[i];
 
         // Change the color of rectangles based on the index in m_colors_col
-        // The color cycling is achieved using m_colors_col[i % 8]
+        // The color cycling is achieved using m_colors_col[i % m_colors_col.size()]
         rectangle(frame, cv::Point(rect.x, rect.y),
                   cv::Point((rect.x + rect.width),
                   (rect.y + rect.height)),
