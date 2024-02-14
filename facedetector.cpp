@@ -42,13 +42,16 @@ QImage FaceDetector::detect(cv::Mat frame)
                                     1.1, 2, 0|cv::CASCADE_SCALE_IMAGE,
                                     cv::Size(100, 100));
 
-    size_t n = m_found_faces.size();
+    // hold the amount of detected faces
+    size_t count_of_found_faces = m_found_faces.size();
 
-    //Draw rectangles around faces
+    //for drawing rectangles around faces
     cv::Rect rect;
 
-    for(size_t i = 0; i < n ; i++)
+    // Iterate over each detected face in m_found_faces
+    for(size_t i = 0; i < count_of_found_faces; i++)
     {
+        // Retrieve the current detected face bounding box
         rect = m_found_faces[i];
 
         // Change the color of rectangles based on the index in m_colors_col
