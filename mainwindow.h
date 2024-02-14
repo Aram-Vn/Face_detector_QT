@@ -60,7 +60,7 @@ private slots:
     void on_start_clicked();
 
 private:
-    Ui::MainWindow *    ui;               ///< The user interface for the main window.
+    Ui::MainWindow      *ui;              ///< The user interface for the main window.
     cv::VideoCapture    m_capture;        ///< Video capture object for accessing the camera.
     cv::Mat             m_frame;          ///< Current video frame captured from the camera.
     FaceDetector        m_detector;       ///< Face detection functionality encapsulated in a FaceDetector instance.

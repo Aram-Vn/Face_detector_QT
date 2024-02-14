@@ -5,6 +5,13 @@ FaceDetector::FaceDetector()
 {
      // Initialize the path to the Haar Cascade XML file
     m_cascade_name = "/usr/share/opencv4/haarcascades/haarcascade_frontalface_default.xml";
+    // cascade_name = "/usr/share/opencv4/haarcascades/haarcascade_frontalface_default.xml";
+
+     // Load the face cascade classifier
+     if(!m_face_cascade.load(m_cascade_name))
+     {
+         qDebug() << "--(!)Error loading\n";  // Print an error message if the classifier fails to load
+     }
 
     // Load the face cascade classifier
     if(!m_face_cascade.load(m_cascade_name))
