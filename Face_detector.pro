@@ -12,6 +12,7 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 # Specify include paths for OpenCV headers
+# change th path if needed
 INCLUDEPATH += /usr/include/opencv4
 
 # Specify library paths and link against OpenCV libraries
