@@ -3,22 +3,22 @@
 
 FaceDetector::FaceDetector()
 {
-     // Initialize the path to the Haar Cascade XML file
-    m_cascade_name = "/usr/share/opencv4/haarcascades/haarcascade_frontalface_default.xml";
-    // cascade_name = "/usr/share/opencv4/haarcascades/haarcascade_frontalface_default.xml";
-
-     // Load the face cascade classifier
-     if(!m_face_cascade.load(m_cascade_name))
-     {
-         qDebug() << "--(!)Error loading\n";  // Print an error message if the classifier fails to load
-     }
+    // Initialize the path to the Haar Cascade XML file
+    m_cascade_name = "/usr/share/opencv4/haarcascades/haarcascade_frontalface_default.xm l";
 
     // Load the face cascade classifier
+
     if(!m_face_cascade.load(m_cascade_name))
     {
-        qDebug() << "--(!)Error loading\n";  // Print an error message if the classifier fails to load
-    }
 
+        QString errorMessage = QString("<---Error--->\nUnable to load the face cascade classifier\n"
+                                       "Make sure the XML file is present at: %1").arg(QString::fromStdString(m_cascade_name));
+        qFatal("%s", qPrintable(errorMessage));
+
+        // // Print an error message if the classifier fails to load
+        // qFatal("\n<---Error--->\nUnable to load the face cascade classifier\n"
+        //        "Make sure the XML file is present at: ", static_cast<std::string>(m_cascade_name)"\n");
+    }
 
     // Define a collection of colors for drawing rectangles around faces
     /*8 colors collection*/
@@ -57,7 +57,7 @@ QImage FaceDetector::detect(cv::Mat frame)
         rectangle(frame, cv::Point(rect.x, rect.y),
                   cv::Point((rect.x + rect.width),
                   (rect.y + rect.height)),
-                  m_colors_col[i%8]);
+                  m_colors_col[i % m_colors_col.size()]);
     }
 
     // Convert Mat to QImage
