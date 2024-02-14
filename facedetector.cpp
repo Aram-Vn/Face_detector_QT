@@ -4,20 +4,19 @@
 FaceDetector::FaceDetector()
 {
     // Initialize the path to the Haar Cascade XML file
-    m_cascade_name = "/usr/share/opencv4/haarcascades/haarcascade_frontalface_default.xm l";
+    m_cascade_name = "/usr/share/opencv4/haarcascades/haarcascade_frontalface_default.xml";
 
     // Load the face cascade classifier
-
     if(!m_face_cascade.load(m_cascade_name))
     {
-
+        // Create a QString error message with a formatted string.
+        // %1 in the string will be replaced with the converted m_cascade_name.
         QString errorMessage = QString("<---Error--->\nUnable to load the face cascade classifier\n"
                                        "Make sure the XML file is present at: %1").arg(QString::fromStdString(m_cascade_name));
-        qFatal("%s", qPrintable(errorMessage));
 
-        // // Print an error message if the classifier fails to load
-        // qFatal("\n<---Error--->\nUnable to load the face cascade classifier\n"
-        //        "Make sure the XML file is present at: ", static_cast<std::string>(m_cascade_name)"\n");
+        // Print the error message using qFatal.
+        // qPrintable is used to convert the QString to a const char* for compatibility.
+        qFatal("%s", qPrintable(errorMessage));
     }
 
     // Define a collection of colors for drawing rectangles around faces
