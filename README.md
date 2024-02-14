@@ -1,2 +1,42 @@
-# Face_detect
-# Face_detector_QT
+# OpenCV Face Detection Qt Application
+
+## description
+This is a simple Qt application that integrates OpenCV for face detection. The application captures video from a webcam, detects faces in each frame, and displays the video with rectangles around the detected faces.
+
+## Features
+
+- Face detection using the Haarcascade frontal face classifier from OpenCV.
+- Real-time video capture and display.
+- Integration of Qt for the graphical user interface.
+
+## Prerequisites
+
+Before running the application, ensure you have the following dependencies installed:
+
+- Qt development environment
+- OpenCV library (version 4.x)
+- A C++ compiler (for Qt)
+
+## Getting Started
+
+1. **Clone the Repository:**
+   ```bash
+   git clone git@github.com:Aram-Vn/Face_detector_QT.git # Clone the repository
+    ```
+2. **Build and Run:**
+   ```bash
+    cd Face_detector_QT # Navigate to the project directory
+    qmake && make       # Build the Qt application
+    ./Face_detector     # Running the Application
+   ```
+
+3. **Usage:**
+   - Click the "Start" button to begin capturing video.
+   - Detected faces will be highlighted with rectangles in real-time.
+   - Click the "Stop" button to end the video capture.
+
+## Project Structure
+
+- **facedetector.cpp/h:** Contains the FaceDetector class responsible for face detection using OpenCV.
+- **mainwindow.cpp/h:** Implements the main application window using Qt.
+- **main.cpp:** Entry point for the application.
