@@ -9,6 +9,7 @@ This is a simple Qt application that integrates OpenCV for face detection. The a
 - Real-time video capture and display.
 - Integration of Qt for the graphical user interface.
 
+---
 
 > [!IMPORTANT]
 > 
@@ -40,6 +41,7 @@ This is a simple Qt application that integrates OpenCV for face detection. The a
 >    m_cascade_name("/usr/share/opencv4/haarcascades/haarcascade_frontalface_default.xml"),
 > ```
 
+---
 ## Getting Started
 
 1. **Clone the Repository:**
