@@ -9,33 +9,36 @@ This is a simple Qt application that integrates OpenCV for face detection. The a
 - Real-time video capture and display.
 - Integration of Qt for the graphical user interface.
 
-## Prerequisites
 
-Before running the application, ensure you have the following dependencies installed:
-
-- [Qt](https://www.qt.io/) - Qt 5.x development environment
-- [OpenCV](https://opencv.org/) - library (version 4.x)
-- A C++ compiler (for Qt)
-
-### OpenCV Include Path
-
-Make sure to specify the correct path to the OpenCV headers in `Face_detector.pro`:
-
-```pro
-# Specify include paths for OpenCV headers
-# Change the path if needed
-INCLUDEPATH += /usr/include/opencv4
-```
-### Haar Cascade XML File Path
-
-The Haar Cascade XML file is used for face detection. Ensure the correct path is set in the `FaceDetector` constructor in `facedetector.cpp`:
-
-```cpp
-FaceDetector::FaceDetector() :
-    // Initialize the path to the Haar Cascade XML file
-    // !!_Change path if needed_!!
-    m_cascade_name("/usr/share/opencv4/haarcascades/haarcascade_frontalface_default.xml"),
-```
+> [!IMPORTANT]
+> 
+> ## Prerequisites
+>
+> Before running the application, ensure you have the following dependencies installed:
+> 
+> - [Qt](https://www.qt.io/) - Qt 5.x development environment
+> - [OpenCV](https://opencv.org/) - library (version 4.x)
+> - A C++ compiler (for Qt)
+>
+> ### OpenCV Include Path
+> 
+> Make sure to specify the correct path to the OpenCV headers in `Face_detector.pro`:
+>
+> ```pro
+> # Specify include paths for OpenCV headers
+> # Change the path if needed
+> INCLUDEPATH += /usr/include/opencv4
+> ```
+> ### Haar Cascade XML File Path
+> 
+> The Haar Cascade XML file is used for face detection. Ensure the correct path is set in the `FaceDetector` constructor in `facedetector.cpp`:
+> 
+> ```cpp
+> FaceDetector::FaceDetector() :
+>    // Initialize the path to the Haar Cascade XML file
+>    // !!_Change path if needed_!!
+>    m_cascade_name("/usr/share/opencv4/haarcascades/haarcascade_frontalface_default.xml"),
+> ```
 
 ## Getting Started
 
