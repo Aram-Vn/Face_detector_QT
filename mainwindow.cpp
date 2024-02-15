@@ -51,7 +51,7 @@ void MainWindow::on_stop_clicked() // Stop the timer and disconnect the capturin
 
 void MainWindow::on_start_clicked()
 {
-    // The Videom_m_capture instance 'm_capture' is opened, capturing video from the default camera (index 0)
+    // The Videom capture instance 'm_capture' is opened, capturing video from the default camera (index 0)
     m_capture.open(0); // Open the defoult camera
 
 
@@ -59,7 +59,7 @@ void MainWindow::on_start_clicked()
     // This ensures that the capturing method will be called at regular intervals
     connect(m_intervalTimer, SIGNAL(timeout()), this, SLOT(capturing()));
 
-    // Start the timer to m_capture frames at regular intervals (approximately 30 m_frame
+    // Start the timer to m_capture frames at regular intervals (approximately 30 frames per second)
 
     // The m_intervalTimer is started with a timeout period of 33 milliseconds,
     // aiming to achieve a m_frame rate close to 30 m_frames per second (1000 ms / 33 ms ≈ 30 fps)
