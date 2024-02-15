@@ -5,6 +5,7 @@
 #include <QMainWindow>
 #include <QGraphicsView>
 #include <QTimer>
+#include <QScopedPointer>
 
 //local include
 #include "facedetector.h"
@@ -46,27 +47,27 @@ private slots:
     void capturing();
 
     /**
-     * @brief Stops the video capturing process and releases the camera.
-     *
-     * This method is triggered when the "Stop" button is clicked.
-     */
-    void on_stop_clicked();
-
-    /**
      * @brief Starts the video capturing process, connecting the capturing slot to a QTimer.
      *
      * This method is triggered when the "Start" button is clicked.
      */
     void on_start_clicked();
 
+    /**
+     * @brief Stops the video capturing process and releases the camera.
+     *
+     * This method is triggered when the "Stop" button is clicked.
+     */
+    void on_stop_clicked();
+
 private:
-    Ui::MainWindow      *ui;              ///< The user interface for the main window.
-    cv::VideoCapture    m_capture;        ///< Video capture object for accessing the camera.
-    cv::Mat             m_frame;          ///< Current video frame captured from the camera.
-    FaceDetector        m_detector;       ///< Face detection functionality encapsulated in a FaceDetector instance.
-    QPixmap             *m_pixmap;        ///< QPixmap for displaying the processed video frame.
-    QTimer              *m_intervalTimer; ///< Timer for triggering the capturing process at regular interval
-    QGraphicsScene      *m_scene;         ///< QGraphicsScene for displaying the video feed in a QGraphicsView.
+    Ui::MainWindow                  *ui;              ///< The user interface for the main window.
+    cv::VideoCapture                m_capture;        ///< Video capture object for accessing the camera.
+    cv::Mat                         m_frame;          ///< Current video frame captured from the camera.
+    FaceDetector                    m_detector;       ///< Face detection functionality encapsulated in a FaceDetector instance.
+    QScopedPointer<QTimer>          m_intervalTimer;  ///< Timer for triggering the capturing process at regular interval
+    QScopedPointer<QPixmap>         m_pixmap;         ///< QPixmap for displaying the processed video frame.
+    QScopedPointer<QGraphicsScene>  m_scene;          ///< QGraphicsScene for displaying the video feed in a QGraphicsView.
 };
 
 #endif // MAINWINDOW_H
