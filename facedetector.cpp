@@ -59,7 +59,7 @@ QImage FaceDetector::detect(cv::Mat frame)
         rectangle(frame, cv::Point(rect.x, rect.y),
                   cv::Point((rect.x + rect.width),
                   (rect.y + rect.height)),
-                  m_colors_col[i % m_colors_col.size()]);
+                  m_colors_col[i % m_colors_col.size()], 2);
     }
 
     // Convert Mat to QImage
