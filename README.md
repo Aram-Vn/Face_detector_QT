@@ -18,7 +18,7 @@ This is a simple Qt application that integrates OpenCV for face detection. The a
 > Before running the application, ensure you have the following dependencies installed:
 > 
 > - [Qt](https://www.qt.io/) - Qt 5.x development environment
-> - [OpenCV](https://opencv.org/) - library (version 4.x)
+> - [OpenCV](https://opencv.org/releases/) - library (version 4.x)
 > - A C++ compiler (for Qt)
 >
 > ### OpenCV Include Path
