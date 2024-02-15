@@ -70,4 +70,3 @@ QImage FaceDetector::detect(cv::Mat frame)
                            QImage::Format_RGB888).rgbSwapped();
     return result;
 }
-

@@ -1,7 +1,5 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-// #include "opencv2/core.hpp"
-// #include "opencv2/highgui.hpp"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -62,4 +60,3 @@ void MainWindow::on_stop_clicked() // Stop the timer and disconnect the capturin
     // Release the camera resources
     m_capture.release();
 }
-
