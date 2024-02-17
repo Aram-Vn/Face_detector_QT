@@ -3,11 +3,11 @@
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
-    ui(new Ui::MainWindow),
-    m_detector(),                           // Use member initialization for m_detector
-    m_intervalTimer(new QTimer(this)),      // Use QScopedPointer for QTimer
-    m_pixmap(new QPixmap()),                // Use QScopedPointer for QPixmap
-    m_scene(new QGraphicsScene())           // Use QScopedPointer for QGraphicsScene
+    ui(new Ui::MainWindow),              // Initialize the main window and set up the user interface
+    m_detector(),                        // Create a FaceDetector instance
+    m_intervalTimer(new QTimer(this)),   // Create a QTimer for continuous capturing
+    m_pixmap(new QPixmap()),             // Create a QPixmap for displaying processed m_frames
+    m_scene(new QGraphicsScene())        // Create a QGraphicsScene for displaying m_frames in the QGraphicsView
 {
     ui->setupUi(this);  // Initialize the main window and set up the user interface
 }
@@ -21,14 +21,14 @@ MainWindow::~MainWindow() // Release resources when the MainWindow is destroyed
 
 void MainWindow::capturing()
 {
-    m_capture.read(m_frame);                              // Read a m_frame from the camera
-    QImage result = m_detector.detect(m_frame);           // Perform face detection on the m_frame using the FaceDetector instance
-    m_pixmap.reset(new QPixmap(QPixmap::fromImage(result)));   // Convert the result to a QPixmap for display
+    m_capture.read(m_frame);                                  // Read a m_frame from the camera
+    QImage result = m_detector.detect(m_frame);               // Perform face detection on the m_frame using the FaceDetector instance
+    m_pixmap.reset(new QPixmap(QPixmap::fromImage(result)));  // Convert the result to a QPixmap for display
 
     m_scene.reset(new QGraphicsScene(ui->graphicsView));     // Create a new QGraphicsScene for the QGraphicsView
-    m_scene->addPixmap(*m_pixmap);                        // Add the QPixmap to the m_scene
-    m_scene->setSceneRect(m_pixmap->rect());              // Set the m_scene rectangle to match the size of the QPixmap
-    ui->graphicsView->setScene(m_scene.data());                  // Set the QGraphicsView to display the m_scene
+    m_scene->addPixmap(*m_pixmap);                           // Add the QPixmap to the m_scene
+    m_scene->setSceneRect(m_pixmap->rect());                 // Set the m_scene rectangle to match the size of the QPixmap
+    ui->graphicsView->setScene(m_scene.data());              // Set the QGraphicsView to display the m_scene
 }
 
 void MainWindow::on_start_clicked()
