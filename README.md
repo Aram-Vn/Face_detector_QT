@@ -1,5 +1,13 @@
 # OpenCV Face Detection Qt Application
 
+## Table of Contents
+- [Description](#description)
+- [Features](#features)
+- [Prerequisites](#prerequisites)
+- [Getting Started](#getting-started)
+- [Project Structure](#project-structure)
+
+
 ## description
 This is a simple Qt application that integrates OpenCV for face detection. The application captures video from a webcam, detects faces in each frame, and displays the video with rectangles around the detected faces.
 
