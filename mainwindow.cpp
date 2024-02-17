@@ -1,6 +1,8 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
+#include <QDateTime>
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow),              // Initialize the main window and set up the user interface
@@ -60,3 +62,28 @@ void MainWindow::on_stop_clicked() // Stop the timer and disconnect the capturin
     // Release the camera resources
     m_capture.release();
 }
+
+void MainWindow::on_pushButton_Capture_Image_clicked()
+{
+    m_capture.read(m_frame);                                  // Read a frame from the camera
+    QImage result = m_detector.detect(m_frame);               // Perform face detection on the frame using the FaceDetector instance
+    m_pixmap.reset(new QPixmap(QPixmap::fromImage(result)));  // Convert the result to a QPixmap for display
+
+    if (!m_frame.empty()) {
+        // Create a timestamp for a unique image file name
+        QString timeStamp = QDateTime::currentDateTime().toString("yyyyMMdd_hhmmss");
+        QString fileName = "/home/aram/dev/Face_detector_QT/images/captured_image_" + timeStamp + ".jpg";
+
+        // Save the captured image
+        bool saved = cv::imwrite(fileName.toStdString(), m_frame);
+
+        if (saved) {
+            qDebug() << "Image saved successfully at:" << fileName;
+        } else {
+            qDebug() << "Error: Failed to save the image!";
+        }
+    } else {
+        qDebug() << "Error: Empty frame. Unable to capture image.";
+    }
+}
+

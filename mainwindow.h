@@ -6,6 +6,8 @@
 #include <QGraphicsView>
 #include <QTimer>
 #include <QScopedPointer>
+#include <QFileDialog>
+#include <QDebug>
 
 //local include
 #include "facedetector.h"
@@ -59,6 +61,8 @@ private slots:
      * This method is triggered when the "Stop" button is clicked.
      */
     void on_stop_clicked();
+
+    void on_pushButton_Capture_Image_clicked();
 
 private:
     Ui::MainWindow                  *ui;              ///< The user interface for the main window.
