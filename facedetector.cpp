@@ -6,12 +6,8 @@ FaceDetector::FaceDetector() :
     // !!_change path if needed_!!
     m_cascade_name("/usr/share/opencv4/haarcascades/haarcascade_frontalface_default.xml"),
 
-    // Define a collection of colors for drawing rectangles around faces
-    /*8 colors collection*/
-    m_colors_col { cv::Scalar(0.0, 0.0, 255.0), cv::Scalar(0.0, 128.0, 255.0),
-                 cv::Scalar(0.0, 255.0, 255.0), cv::Scalar(0.0, 255.0, 0.0),
-                 cv::Scalar(255.0, 128.0, 0.0), cv::Scalar(255.0, 255.0, 0.0),
-                 cv::Scalar(255.0, 0.0, 0.0), cv::Scalar(255.0, 0.0, 255.0) }
+    // Define a color for drawing rectangles around faces
+    m_square_color { cv::Scalar(0.0, 0.0, 255.0)}
 {
     // Load the face cascade classifier
     if(!m_face_cascade.load(m_cascade_name))
@@ -54,12 +50,12 @@ QImage FaceDetector::detect(cv::Mat frame)
         // Retrieve the current detected face bounding box
         rect = m_found_faces[i];
 
-        // Change the color of rectangles based on the index in m_colors_col
-        // The color cycling is achieved using m_colors_col[i % m_colors_col.size()]
+        // Change the color of rectangles based on the index in m_square_colors
+        // The color cycling is achieved using m_square_colors[i % m_square_colors.size()]
         rectangle(frame, cv::Point(rect.x, rect.y),
                   cv::Point((rect.x + rect.width),
                   (rect.y + rect.height)),
-                  m_colors_col[i % m_colors_col.size()], 2);
+                  m_square_color, 2);
     }
 
     // Convert Mat to QImage

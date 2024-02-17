@@ -44,7 +44,7 @@ private:
     cv::String                   m_cascade_name;   ///< Path to the Haar Cascade XML file.
     cv::CascadeClassifier        m_face_cascade;   ///< Cascade classifier for face detection.
     std::vector<cv::Rect>        m_found_faces;    ///< Vector to store the detected faces.
-    QList<cv::Scalar>            m_colors_col;     ///< List of colors for drawing rectangles around faces.
+    cv::Scalar                   m_square_color;     ///< List of colors for drawing rectangles around faces.
 };
 
 #endif // FACEDETECTOR_H
