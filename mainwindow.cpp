@@ -72,7 +72,15 @@ void MainWindow::on_pushButton_Capture_Image_clicked()
     if (!m_frame.empty()) {
         // Create a timestamp for a unique image file name
         QString timeStamp = QDateTime::currentDateTime().toString("yyyyMMdd_hhmmss");
-        QString fileName = "/home/aram/dev/Face_detector_QT/images/captured_image_" + timeStamp + ".jpg";
+
+        // Get the build directory path
+        QString buildDir = QCoreApplication::applicationDirPath();
+
+        // Create a relative path in the build directory for the images
+        QString relativePath = "images/captured_image_" + timeStamp + ".jpg";
+
+        // Append the relative path to the build directory
+        QString fileName = QDir(buildDir).filePath(relativePath);
 
         // Save the captured image
         bool saved = cv::imwrite(fileName.toStdString(), m_frame);
@@ -86,4 +94,6 @@ void MainWindow::on_pushButton_Capture_Image_clicked()
         qDebug() << "Error: Empty frame. Unable to capture image.";
     }
 }
+
+
 

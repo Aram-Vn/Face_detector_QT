@@ -44,6 +44,11 @@ HEADERS += \
 FORMS += \
     mainwindow.ui
 
+
+# Create the images directory in the build directory
+QMAKE_POST_LINK += mkdir -p $$OUT_PWD/images
+
+
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
