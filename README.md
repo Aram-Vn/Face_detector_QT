@@ -17,7 +17,6 @@ This is a simple Qt application that integrates OpenCV for face detection. The a
 - Real-time video capture and display.
 - Integration of Qt for the graphical user interface.
 - **Image Capturing**: Capture images of detected faces during video processing.
-- 
 ---
 
 > [!IMPORTANT]
