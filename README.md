@@ -16,7 +16,8 @@ This is a simple Qt application that integrates OpenCV for face detection. The a
 - Face detection using the Haarcascade frontal face classifier from OpenCV.
 - Real-time video capture and display.
 - Integration of Qt for the graphical user interface.
-
+- **Image Capturing**: Capture images of detected faces during video processing.
+- 
 ---
 
 > [!IMPORTANT]
@@ -64,9 +65,14 @@ This is a simple Qt application that integrates OpenCV for face detection. The a
    ```
 
 3. **Usage:**
-   - Click the "Start" button to begin capturing video.
-   - Detected faces will be highlighted with rectangles in real-time.
-   - Click the "Stop" button to end the video capture.
+
+   | Action                      | Description                                     |   
+   |-----------------------------|-------------------------------------------------|
+   | Click **"Start"** button    | Begins capturing video in real-time.            |
+   | **Detected Faces**          | Highlighted with rectangles on the video feed.  |
+   | Click **"Capture Image"**   | Saves an image of the current frame.            |
+   | Click the **"Stop"** button |    to end the video capture.                    |    
+   |**Image Storage**            | Captured images are stored in the `images` directory |
 
 ## Project Structure
 
