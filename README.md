@@ -58,9 +58,9 @@ This is a simple Qt application that integrates OpenCV for face detection. The a
     ```
 2. **Build and Run:**
    ```bash
-    cd Face_detector_QT # Navigate to the project directory
-    qmake && make       # Build the Qt application
-    ./Face_detector     # Run the Application
+   cd Face_detector_QT                          # Navigate to the project directory
+   mkdir build && cd build && qmake .. && make  # create build directory and build the Qt application
+   ./Face_detector                              # Run the Application
    ```
 
 3. **Usage:**
