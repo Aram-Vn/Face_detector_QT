@@ -73,6 +73,9 @@ This is a simple Qt application that integrates OpenCV for face detection. The a
    | Click **"Capture Image"**   | Saves an image of the current frame.            |
    | Click the **"Stop"** button |    to end the video capture.                    |    
    |**Image Storage**            | Captured images are stored in the `images` directory |
+   
+![example](https://github.com/Aram-Vn/Face_detector_QT/assets/118690340/3fef90c9-5e42-4c04-9939-bae26bc70855)
+
 
 ## Project Structure
 
