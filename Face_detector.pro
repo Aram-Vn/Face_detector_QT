@@ -7,7 +7,7 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 # Set C++ standard to C++17
 CONFIG += c++17
 
-
+#to access camera in mac
 macx {
     QMAKE_INFO_PLIST = $$PWD/Info.plist.in
 }
@@ -18,7 +18,20 @@ macx {
 
 # Specify include paths for OpenCV headers
 # change th path if needed
-INCLUDEPATH += /usr/include/opencv4
+
+unix {
+    INCLUDEPATH += /usr/include/opencv4 # posible path for unix
+}
+
+win32 {
+    INCLUDEPATH += C:/opencv/build/install/include/opencv4 # posible path for windows
+}
+
+macx {
+   INCLUDEPATH += /usr/local/include/opencv4 # posible path for mac
+}
+
+message(Qt version: $$[QT_VERSION])
 
 # Specify library paths and link against OpenCV libraries
 LIBS += -L/usr/local/lib \
@@ -38,7 +51,8 @@ LIBS += -L/usr/local/lib \
 SOURCES += \
     main.cpp \
     mainwindow.cpp \
-    facedetector.cpp
+    facedetector.cpp \
+
 
 # List of header files for the project
 HEADERS += \
@@ -53,6 +67,11 @@ FORMS += \
 # Create the images directory in the build directory
 QMAKE_POST_LINK += mkdir -p $$OUT_PWD/images
 
+copydata.commands = $(COPY_DIR) $$PWD/cvFiles/haarcascade_frontalface_default.xml  $$OUT_PWD
+first.depends = $(first) copydata
+export(first.depends)
+export(copydata.commands)
+QMAKE_EXTRA_TARGETS += first copydata
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

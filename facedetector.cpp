@@ -3,8 +3,7 @@
 
 FaceDetector::FaceDetector() :
     // Initialize the path to the Haar Cascade XML file
-    // !!_change path if needed_!!
-    m_cascade_name("/usr/share/opencv4/haarcascades/haarcascade_frontalface_default.xml"),
+    m_cascade_name((QCoreApplication::applicationDirPath() + "/haarcascade_frontalface_default.xml").toStdString()),
 
     // Define a color for drawing rectangles around faces
     m_square_color { cv::Scalar(0.0, 0.0, 255.0)}

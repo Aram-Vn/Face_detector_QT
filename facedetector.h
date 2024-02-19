@@ -10,6 +10,8 @@
 //qt & C++ includes
 #include <QImage>
 #include <vector>
+#include <QCoreApplication>
+
 
 // using namespace cv;
 /**
