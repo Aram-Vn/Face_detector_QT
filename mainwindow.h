@@ -8,6 +8,7 @@
 #include <QScopedPointer>
 #include <QFileDialog>
 #include <QDebug>
+#include <QObject>
 
 //local include
 #include "facedetector.h"
